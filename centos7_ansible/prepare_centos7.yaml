@@ -1,0 +1,11 @@
+---
+- name: "Prepare Centos 7 server"
+  hosts: all
+  gather_facts: False
+  tasks:
+    - name: Create Docker container
+      docker_container:
+        image: busybox
+        command: sleep 1d
+        name: "busy"
+
