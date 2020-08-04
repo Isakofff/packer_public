@@ -26,7 +26,9 @@ sudo yum install -y \
     ncdu \
     nmap \
     screen \
-    git
+    git \
+    python3 \
+    python3-pip
 echo -e "\n[+] Enable docker daemon\n"
 sudo systemctl enable docker
 echo -e "\n[+] Add 'centos' user to 'docker' group\n"
