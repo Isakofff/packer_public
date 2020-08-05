@@ -1,0 +1,15 @@
+---
+- name: Install Jenkins
+  hosts: all
+  become: true
+  roles:
+    - role: geerlingguy.jenkins
+    - role: geerlingguy.ansible
+    - role: geerlingguy.packer
+  vars:
+    ssh_use_pam: true
+    jenkins_hostname: localhost
+    jenkins_plugins: [ansicolor, greenballs, locale, rebuild]
+    jenkins_prefer_lts: true
+    ansible_remote_tmp: /tmp/ansible
+    packer_version: "1.6.1"

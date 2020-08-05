@@ -1,0 +1,6 @@
+# https://galaxy.ansible.com/geerlingguy/jenkins
+# https://galaxy.ansible.com/geerlingguy/ansible
+# https://galaxy.ansible.com/geerlingguy/packer
+- src: geerlingguy.jenkins
+- src: geerlingguy.ansible
+- src: geerlingguy.packer
