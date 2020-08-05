@@ -28,5 +28,21 @@
     },{
         "type": "ansible",
         "playbook_file": "jenkins.yml"
-    }]
+    },{
+        "type": "file",
+        "source": "test_infra.py",
+        "destination": "/tmp/test_infra.py"
+    },{
+        "type": "shell",
+        "inline":  [
+            "sudo pip3 install testinfra",
+            "python3 -m pytest -v /tmp/test_infra.py --junit-xml junit.xml"
+        ]
+    },{
+        "type": "file",
+        "source": "junit.xml",
+        "destination": "junit.xml",
+        "direction": "download"
+    }
+    ]
 }
