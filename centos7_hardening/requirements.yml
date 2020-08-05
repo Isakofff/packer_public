@@ -1,0 +1,5 @@
+# https://dev-sec.io/
+# https://galaxy.ansible.com/dev-sec/os-hardening
+# https://galaxy.ansible.com/dev-sec/ssh-hardening
+- src: dev-sec.os-hardening
+- src: dev-sec.ssh-hardening

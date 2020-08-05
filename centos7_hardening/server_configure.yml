@@ -1,0 +1,14 @@
+---
+- name: Harden the image
+  hosts: all
+  become: true
+  roles:
+    - role: dev-sec.os-hardening
+    - role: dev-sec.ssh-hardening
+  vars:
+    sysctl_overwrite:
+      # Enable IPv4 traffic forwarding
+      net.ipv4.ip_forward: 1
+    # To allow access with our EC2 key
+    ssh_use_pam: true
+
