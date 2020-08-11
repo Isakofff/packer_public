@@ -37,3 +37,10 @@ sudo systemctl enable docker
 echo -e "\n[+] Add 'centos' user to 'docker' group\n"
 sudo usermod -aG docker centos
 
+echo -e "\n[+] Bug fixes\n"
+# fixing error "Unable to register authentication agent: GDBus.Error:org.freedesktop.PolicyKit1.Error.Failed:Cannot determine user of subject"
+# which caused by 'hidepid=2' option in /proc mount; daemon 'polkit'
+# the problem is in 'dev-sec.os-hardening' Ansible Galaxy role
+sudo groupadd -g 23 nohidproc
+sudo usermod -a -G nohidproc polkitd
+sudo sed -i 's/proc \/proc proc rw,nosuid,nodev,noexec,relatime,hidepid=2 0 0/proc \/proc proc rw,nosuid,nodev,noexec,relatime,hidepid=2,gid=nohidproc 0 0/g' /etc/fstab
